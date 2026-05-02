@@ -1,0 +1,42 @@
+# Local dev infrastructure: Postgres (with pgvector) + Redis.
+# Production uses Railway-managed Postgres + Redis.
+#
+# Bring up:    docker compose up -d
+# Tear down:   docker compose down
+# With data:   docker compose down -v   (DESTROYS volumes)
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: mock-interviewer-postgres
+    environment:
+      POSTGRES_USER: aditya
+      POSTGRES_PASSWORD: dev_only_password
+      POSTGRES_DB: mock_interviewer
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infra/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aditya -d mock_interviewer"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: mock-interviewer-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  postgres_data:
+  redis_data:

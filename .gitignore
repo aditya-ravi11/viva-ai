@@ -1,0 +1,99 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.tox/
+.nox/
+.venv/
+venv/
+env/
+*.egg-info/
+*.egg
+.eggs/
+pip-wheel-metadata/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+build/
+dist/
+.turbo/
+*.tsbuildinfo
+.swc/
+.next-env.d.ts
+
+# Env files (track .env.example only)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+!.env.example
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ML / data artifacts (track recipes, not blobs)
+ml/checkpoints/
+ml/runs/
+ml/wandb/
+ml/data/raw/
+ml/data/processed/
+*.pt
+*.ckpt
+*.bin
+*.safetensors
+*.gguf
+
+# Scraper output (track spiders, not output)
+scrapers/output/
+scrapers/cache/
+*.jl
+*.jsonl
+
+# Audio recordings (large; live in R2)
+audio/
+*.wav
+*.mp3
+*.opus
+*.flac
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Misc
+.cache/
+.parcel-cache/
+
+# Claude session state
+.claude/
